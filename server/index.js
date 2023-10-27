@@ -160,7 +160,18 @@ app.delete('/product/:_id', async(req,res) => {
     })
 
 });
+// search products
 
+app.get('/serchProduct',async (req,res) => {
+    const {q} =req.query;
+    const searchProduct =await Product.find({name:{$regex:q,$options:'i'}})
+
+    res.json({
+        success:true,
+        data: searchProduct,
+        message:"search product successfully"
+    })
+});
 
 const PORT = process.env.PORT || 5000;
 
