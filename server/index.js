@@ -122,6 +122,16 @@ app.post('/product', async (req, res) => {
     }
 
 });
+// get all products /get
+
+app.get('/products', async(req,res) => {
+     const findProduct = await Product.find()
+     res.json({
+        success:true,
+        data: findProduct,
+        message:"get all product successfully"
+     })
+});
 
 
 const PORT = process.env.PORT || 5000;
