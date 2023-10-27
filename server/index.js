@@ -133,6 +133,21 @@ app.get('/products', async(req,res) => {
      })
 });
 
+// get spesific product by id
+
+app.get('/product/:id',async (req,res) => {
+
+    const {id} = req.params;
+    const findproductdetail = await Product.findOne({ _id :id });
+
+    res.json({
+        success:true,
+        data :findproductdetail,
+        message:"get product successfully"
+    })
+
+});
+
 
 const PORT = process.env.PORT || 5000;
 
