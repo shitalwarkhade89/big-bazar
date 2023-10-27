@@ -135,15 +135,28 @@ app.get('/products', async(req,res) => {
 
 // get spesific product by id
 
-app.get('/product/:id',async (req,res) => {
+app.get('/product/:_id',async (req,res) => {
 
-    const {id} = req.params;
-    const findproductdetail = await Product.findOne({ _id :id });
+    const {_id} = req.params;
+    const findproductdetail = await Product.findOne({ _id :_id });
 
     res.json({
         success:true,
         data :findproductdetail,
         message:"get product successfully"
+    })
+
+});
+
+// delete product /delete
+
+app.delete('/product/:_id', async(req,res) => {
+    const {_id} = req.params;
+    const deleteProduct =await Product.deleteOne({_id:_id})
+    res.json({
+        success :true,
+        data:deleteProduct,
+        message:"delete product successfully"
     })
 
 });
