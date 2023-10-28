@@ -124,118 +124,132 @@ app.post('/product', async (req, res) => {
 });
 // get all products /get
 
-app.get('/products', async(req,res) => {
-     const findProduct = await Product.find()
-     res.json({
-        success:true,
+app.get('/products', async (req, res) => {
+    const findProduct = await Product.find()
+    res.json({
+        success: true,
         data: findProduct,
-        message:"get all product successfully"
-     })
+        message: "get all product successfully"
+    })
 });
 
 // get spesific product by id
 
-app.get('/product/:_id',async (req,res) => {
+app.get('/product/:_id', async (req, res) => {
 
-    const {_id} = req.params;
-    const findproductdetail = await Product.findOne({ _id :_id });
+    const { _id } = req.params;
+    const findproductdetail = await Product.findOne({ _id: _id });
 
     res.json({
-        success:true,
-        data :findproductdetail,
-        message:"get product successfully"
+        success: true,
+        data: findproductdetail,
+        message: "get product successfully"
     })
 
 });
 
 // delete product /delete
 
-app.delete('/product/:_id', async(req,res) => {
-    const {_id} = req.params;
-    const deleteProduct =await Product.deleteOne({_id:_id})
+app.delete('/product/:_id', async (req, res) => {
+    const { _id } = req.params;
+    const deleteProduct = await Product.deleteOne({ _id: _id })
     res.json({
-        success :true,
-        data:deleteProduct,
-        message:"delete product successfully"
+        success: true,
+        data: deleteProduct,
+        message: "delete product successfully"
     })
 
 });
 // search products
 
-app.get('/serchProduct',async (req,res) => {
-    const {q} =req.query;
-    const searchProduct =await Product.find({name:{$regex:q,$options:'i'}})
+app.get('/serchProduct', async (req, res) => {
+    const { q } = req.query;
+    const searchProduct = await Product.find({ name: { $regex: q, $options: 'i' } })
 
     res.json({
-        success:true,  
+        success: true,
         data: searchProduct,
-        message:"search product successfully"
+        message: "search product successfully"
     })
 });
 
 // Post /order
-app.post('/order',async(req,res) => {
-    const { user,product,  deliveryCharges,   shippingAddress,status, quantity} = req.body;
+app.post('/order', async (req, res) => {
+    const { user, product, deliveryCharges, shippingAddress, status, quantity } = req.body;
 
-    const newOrder = new Order ({
-        user:user,
-        product:product,
-        deliveryCharges:deliveryCharges,
-       shippingAddress: shippingAddress,
-        status:status,
+    const newOrder = new Order({
+        user: user,
+        product: product,
+        deliveryCharges: deliveryCharges,
+        shippingAddress: shippingAddress,
+        status: status,
         quantity: quantity,
     });
-    
-   try{
-    const saveOrder = await newOrder.save();
-    res.json({
-        success:true,
-       data: saveOrder,
-       message:"order created  successfully"
-    })
-   }
-   catch(e){
-    res.json({
-        success:false,
-        message:e.message
-    });
-   }
+
+    try {
+        const saveOrder = await newOrder.save();
+        res.json({
+            success: true,
+            data: saveOrder,
+            message: "order created  successfully"
+        })
+    }
+    catch (e) {
+        res.json({
+            success: false,
+            message: e.message
+        });
+    }
 });
 
 // get /oredr/:id
 
-app.get('/order/:id',async(req,res) => {
-    const {id} = req.params;
-    
+app.get('/order/:id', async (req, res) => {
+    const { id } = req.params;
+
     const findOrder = await Order.findById(id).populate("user product");
 
     // clean sensitive details
-//   password gender address
-findOrder.user. password = undefined;
-findOrder.user. gender = undefined;
-findOrder.user.address = undefined;
+    //   password gender address
+    findOrder.user.password = undefined;
+    findOrder.user.gender = undefined;
+    findOrder.user.address = undefined;
     res.json({
-        success:true,
-        data:  findOrder,
-        message:"order fetched successfully"
+        success: true,
+        data: findOrder,
+        message: "order fetched successfully"
     })
 });
 
 // get/orders
-app.get('/ordres',async(req,res) => {
-    const allOrders =await Order.find().populate("user product");
+
+app.get('/ordres', async (req, res) => {
+    const allOrders = await Order.find().populate("user product");
     allOrders.forEach(order => {
-        order.user.password =undefined;
-        
+        order.user.password = undefined;
+
     });
     res.json({
-        success:true,
-        data:allOrders,
-        message:"Allorders fetched successfully"
+        success: true,
+        data: allOrders,
+        message: "Allorders fetched successfully"
 
     });
 });
 
+// GET /orders/user/:id
+
+app.get('/orders/user/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const userOrders = await Order.find({ user: id }).populate("user product");
+
+    res.json({
+        success: true,
+        data: userOrders,
+        message: "user's order fetched successfully"
+    });
+});
 
 
 const PORT = process.env.PORT || 5000;
