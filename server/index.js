@@ -1,10 +1,10 @@
 import express from 'express';
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 import User from './models/User.js';
 import Product from './models/Product.js';
-
+import Order from './models/Order.js';
 
 const app = express();
 app.use(express.json());
@@ -167,9 +167,29 @@ app.get('/serchProduct',async (req,res) => {
     const searchProduct =await Product.find({name:{$regex:q,$options:'i'}})
 
     res.json({
-        success:true,
+        success:true,  
         data: searchProduct,
         message:"search product successfully"
+    })
+});
+
+// Post /order
+app.post('/order',async(req,res) => {
+    const { user,product, delivryCharges,  shippedAddress,status, quantity} = req.body;
+
+    const newOrder = new Order ({
+        user:user,
+        product:product,
+        delivryCharges: delivryCharges,
+        shippedAddress:shippedAddress,
+        status:status,
+        quantity: quantity,
+    })
+    const saveOrder = await newOrder.save();
+    res.json({
+        success:true,
+       data: saveOrder,
+       message:"create order successfully"
     })
 });
 
