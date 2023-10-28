@@ -251,6 +251,22 @@ app.get('/orders/user/:id', async (req, res) => {
     });
 });
 
+// PATCH / order/status/:id
+
+app.patch('/order/status/:id', async (req,res) => {
+    const {id} =req.params;
+
+    const {status} =req.body;
+
+     await Order.updateOne({_id :id},{$set:{status:status}});
+
+     res.json({
+        success:true,
+        message:"order status updated successfully"
+
+     });
+    
+});
 
 const PORT = process.env.PORT || 5000;
 
