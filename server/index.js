@@ -175,21 +175,49 @@ app.get('/serchProduct',async (req,res) => {
 
 // Post /order
 app.post('/order',async(req,res) => {
-    const { user,product, delivryCharges,  shippedAddress,status, quantity} = req.body;
+    const { user,product,  deliveryCharges,   shippingAddress,status, quantity} = req.body;
 
     const newOrder = new Order ({
         user:user,
         product:product,
-        delivryCharges: delivryCharges,
-        shippedAddress:shippedAddress,
+        deliveryCharges:deliveryCharges,
+       shippingAddress: shippingAddress,
         status:status,
         quantity: quantity,
-    })
+    });
+    
+   try{
     const saveOrder = await newOrder.save();
     res.json({
         success:true,
        data: saveOrder,
-       message:"create order successfully"
+       message:"order created  successfully"
+    })
+   }
+   catch(e){
+    res.json({
+        success:false,
+        message:e.message
+    });
+   }
+});
+
+// get /oredr/:id
+
+app.get('/order/:id',async(req,res) => {
+    const {id} = req.params;
+    
+    const findOrder = await Order.findById(id).populate("user product");
+
+    // clean sensitive details
+//   password gender address
+findOrder.user. password = undefined;
+findOrder.user. gender = undefined;
+findOrder.user.address = undefined;
+    res.json({
+        success:true,
+        data:  findOrder,
+        message:"order fetched successfully"
     })
 });
 

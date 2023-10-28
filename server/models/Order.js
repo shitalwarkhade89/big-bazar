@@ -17,11 +17,11 @@ const orderSchema =new Schema({
         type:Number,
         default:1,
   },
-  delivryCharges:{
+  deliveryCharges:{
     type:Number,
     default:0,
   },
-  shippedAddress:{
+  shippingAddress:{
     type:String,
     
 
