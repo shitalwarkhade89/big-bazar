@@ -221,6 +221,23 @@ findOrder.user.address = undefined;
     })
 });
 
+// get/orders
+app.get('/ordres',async(req,res) => {
+    const allOrders =await Order.find().populate("user product");
+    allOrders.forEach(order => {
+        order.user.password =undefined;
+        
+    });
+    res.json({
+        success:true,
+        data:allOrders,
+        message:"Allorders fetched successfully"
+
+    });
+});
+
+
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
