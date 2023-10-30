@@ -1,0 +1,23 @@
+body{
+    background-color:#d8effd;
+}
+.text-center{
+    text-align: center;
+}
+.input-boxes{
+    display: block;
+    font-size: 18px;
+    padding: 5px 10px;
+    width: 270px;
+margin-bottom:13px;
+}
+.btn{
+   background-color: black;
+   border:none;
+   border-radius: 10px;
+   min-width: 100px;
+   padding: 10px 20px;
+   text-align: center;
+   color: white;
+   font-size: 15px;
+}

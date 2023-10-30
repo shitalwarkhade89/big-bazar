@@ -1,0 +1,12 @@
+.singup-form{
+    width: fit-content;
+    background-color: white;
+   margin: 25px auto;
+   padding:  20px 50px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px 0 rgb(84, 83, 83) ;
+}
+.gender{
+   margin-left: 20px;
+   
+}

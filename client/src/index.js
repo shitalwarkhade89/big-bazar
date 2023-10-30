@@ -1,4 +1,5 @@
 import ReactDom from 'react-dom/client';
+import './index.css'
 import{createBrowserRouter ,RouterProvider} from 'react-router-dom';
 import Login from './views/Login/Login';
 import Singup from './views/Singup/Singup';
