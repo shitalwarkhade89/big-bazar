@@ -53,7 +53,7 @@ function Singup() {
             <form className="singup-form">
                 <h1 className="text-center">Singup</h1>
                 <div>
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name" className="label">Name</label>
                     <input type="text"
                         className="input-boxes"
                         id="name"
@@ -65,7 +65,7 @@ function Singup() {
                 </div>
 
                 <div>
-                    <label htmlFor="email">E-mail</label>
+                    <label htmlFor="email" className="label" >E-mail</label>
                     <input type="text"
                         className="input-boxes"
                         id="email"
@@ -78,7 +78,7 @@ function Singup() {
                 </div>
 
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password" className="label">Password</label>
                     <input type="text"
                         className="input-boxes"
                         id="password"
@@ -90,7 +90,7 @@ function Singup() {
                 </div>
 
                 <div>
-                    <label htmlFor="mobile">Mobile No.</label>
+                    <label htmlFor="mobile" className="label">Mobile No.</label>
                     <input type="text"
                         className="input-boxes"
                         id="mobile"
@@ -102,7 +102,7 @@ function Singup() {
                 </div>
 
                 <div>
-                    <label htmlFor="address">Address</label>
+                    <label htmlFor="address" className="label">Address</label>
                     <input type="text"
                         className="input-boxes"
                         id="address"

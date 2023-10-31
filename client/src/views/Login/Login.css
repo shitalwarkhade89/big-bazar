@@ -1,0 +1,13 @@
+.login-form{
+    width: fit-content;
+    background-color: white;
+   margin: 40px auto;
+   padding:  20px 50px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px 0 rgb(84, 83, 83) ;
+}
+.login-btn{
+    display: block;
+    margin: 10px auto;
+    width: 130px;
+}
