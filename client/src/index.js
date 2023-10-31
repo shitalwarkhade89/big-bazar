@@ -3,13 +3,14 @@ import './index.css'
 import{createBrowserRouter ,RouterProvider} from 'react-router-dom';
 import Login from './views/Login/Login';
 import Singup from './views/Singup/Singup';
+import Home from './views/Home/Home';
 const root = ReactDom.createRoot(document.getElementById('root'));
 
 
 const router= createBrowserRouter([
     {
         path:'/',
-        element:<h1>Home</h1>
+        element:<Home/>
     },
     {
         path:'/login',

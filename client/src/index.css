@@ -1,5 +1,7 @@
 body{
-    background-color:#d8effd;
+    background-color:rgb(251, 224, 228);
+    margin: 0;
+    padding: 0;
 }
 .text-center{
     text-align: center;
@@ -23,4 +25,7 @@ margin-bottom:13px;
 }
 .label{
     font-size: 25px;
+}
+.text-right{
+  text-align: right;
 }

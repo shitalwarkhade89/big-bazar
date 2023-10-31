@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Singup.css"
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 function Singup() {
 
     const [name, setName] = useState("");
@@ -139,6 +140,9 @@ function Singup() {
                 <button type="button" className="btn singup-btn"
                 onClick={singup}
                 >Singup</button>
+                 <Link to="/login">
+                <p  className="text-right">Already have an account</p>
+                </Link>
             </form>
         </div>
     )

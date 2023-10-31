@@ -1,10 +1,25 @@
 import React,{useState} from "react";
 import "./Login.css";
 import axios from "axios";
+import { Link, json } from "react-router-dom";
+
 function Login(){
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // post/login
+    const login = async() => {
+    const response = await axios.post("/login",{
+        email:email,
+        password:password
+    })
+    // local storage
+    alert(response?.data?.message );
+    if(response?. data?.success){
+        localStorage.setItem("user",JSON.stringify(response?.data?.data));
+        window.location.href ="/";
+    }
+    }
     return(
      <div>
         <form className="login-form">
@@ -33,7 +48,12 @@ function Login(){
                             setPassword(e.target.value);
                         }} />
                 </div>
-                <button className=" btn login-btn">Login</button>
+               
+                <button type="button" className=" btn login-btn" onClick={login}>Login</button>
+                <Link to="/signup">
+                <p  className="text-right">create a account</p>
+                </Link>
+        
            
         </form>
      </div>
