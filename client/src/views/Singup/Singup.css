@@ -8,5 +8,10 @@
 }
 .gender{
    margin-left: 20px;
-   
+
+}
+.singup-btn{
+    display: block;
+    margin: 10px auto;
+    width: 130px;
 }

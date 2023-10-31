@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Singup.css"
+import axios from 'axios';
 function Singup() {
 
     const [name, setName] = useState("");
@@ -8,6 +9,44 @@ function Singup() {
     const [mobile, setMobile] = useState("");
     const [address, setAddress] = useState("");
     const [gender, setGender] = useState("female");
+
+    const singup = async() => {
+      if(!name){
+        alert("Name is required");
+        return;
+      }  
+      if(!email){
+        alert("E-mail is required");
+        return;
+      } 
+      if(!password){
+        alert("Password is required");
+        return;
+      }   
+      if(!mobile){
+        alert("Mobile is required");
+        return;
+      }  
+      if(!address){
+        alert("Address is required");
+        return;
+      }  
+
+      const response = await axios.post("/singup",{
+        name:name,
+        email:email,
+        password:password,
+        mobile:mobile,
+        address:address,
+        gender:gender
+      })
+
+      alert(response?.data?.message);
+      if (response?.data?. success){
+        window.location.href ="/login";
+      }
+     
+    };
 
     return (
         <div>
@@ -20,7 +59,7 @@ function Singup() {
                         id="name"
                         placeholder="Enter your name"
                         value={name}
-                        onchange={(e) => {
+                        onChange={(e) => {
                             setName(e.target.value);
                         }} />
                 </div>
@@ -33,8 +72,8 @@ function Singup() {
                         placeholder="Enter your 
                         E-mail"
                         value={email}
-                        onchange={(e) => {
-                            setName(e.target.value);
+                        onChange={(e) => {
+                            setEmail(e.target.value);
                         }} />
                 </div>
 
@@ -45,8 +84,8 @@ function Singup() {
                         id="password"
                         placeholder="Enter your password"
                         value={password}
-                        onchange={(e) => {
-                            setName(e.target.value);
+                        onChange={(e) => {
+                            setPassword(e.target.value);
                         }} />
                 </div>
 
@@ -57,8 +96,8 @@ function Singup() {
                         id="mobile"
                         placeholder="Enter your Mobile No."
                         value={mobile}
-                        onchange={(e) => {
-                            setName(e.target.value);
+                        onChange={(e) => {
+                            setMobile(e.target.value);
                         }} />
                 </div>
 
@@ -69,8 +108,8 @@ function Singup() {
                         id="address"
                         placeholder="Enter your address"
                         value={address}
-                        onchange={(e) => {
-                            setName(e.target.value);
+                        onChange={(e) => {
+                            setAddress(e.target.value);
                         }} />
                 </div>
 
@@ -97,7 +136,9 @@ function Singup() {
                     <label htmlFor="female"> Female</label>
                 </div>
 
-                <button type="button" className="btn">Singup</button>
+                <button type="button" className="btn singup-btn"
+                onClick={singup}
+                >Singup</button>
             </form>
         </div>
     )
