@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Singup.css"
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import Navbar from "../../components/Navbar/Navbar";
 function Singup() {
 
     const [name, setName] = useState("");
@@ -50,6 +51,8 @@ function Singup() {
     };
 
     return (
+      <>
+      <Navbar/>
         <div>
             <form className="singup-form">
                 <h1 className="text-center">Singup</h1>
@@ -145,6 +148,7 @@ function Singup() {
                 </Link>
             </form>
         </div>
+        </>
     )
 }
 

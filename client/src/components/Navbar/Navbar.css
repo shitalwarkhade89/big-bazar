@@ -1,4 +1,28 @@
 .navbar{
     background-color: whitesmoke;
-    padding:2px 8px;
+    padding:8px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-logo{
+text-decoration: none;
+color: black;
+font-size: 29px;
+font-family:'Times New Roman', Times, serif;
+font-weight: bold;
+
+}
+.navbar-links{
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    margin: 0 10px;
+}
+.navbar-links:hover{
+background-color: black;
+color: white;
+padding: 5px 10px;
+border-radius: 10px;
+transition: 0.5s;
 }

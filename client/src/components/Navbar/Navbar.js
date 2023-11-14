@@ -6,12 +6,16 @@ function Navbar() {
 
     return (
         <>
-    <div className="navbar">
-     <h1>Big-Bazar 🛒</h1>
-     <Link to="/login">Login</Link>
-     <Link to="/signup">Signup</Link>
-    <span>Hello ,User</span>
-  </div>
+            <div className="navbar">
+                <Link to="/" className="navbar-logo">Big-Bazar 🛒</Link>
+                <div>
+                    <Link to="/login" className="navbar-links">Login</Link>
+                    <Link to="/signup" className="navbar-links">Signup</Link>
+                    <Link to="orders" className="navbar-links">My Orders</Link>
+                </div>
+
+                <span  className="navbar-links">Hello ,User</span>
+            </div>
         </>
     )
 }
