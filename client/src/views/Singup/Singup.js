@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "./Singup.css"
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -50,6 +50,14 @@ function Singup() {
      
     };
 
+     useEffect(() =>{
+      const storageUser =JSON.parse (localStorage.getItem("user")||'{}');
+      if (storageUser?.email){
+          alert("You are alraeady logd in !");
+          window.location.href ="/";
+      }
+
+  },[])
     return (
       <>
       <Navbar/>

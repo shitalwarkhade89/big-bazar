@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import "./Login.css";
 import axios from "axios";
 import { Link, json } from "react-router-dom";
@@ -10,6 +10,7 @@ function Login(){
     const [password, setPassword] = useState("");
     // post/login
     const login = async() => {
+
     const response = await axios.post("/login",{
         email:email,
         password:password
@@ -21,6 +22,14 @@ function Login(){
         window.location.href ="/";
     }
     }
+    useEffect(() =>{
+        const storageUser =JSON.parse (localStorage.getItem("user")||'{}');
+        if (storageUser?.email){
+            alert("You are alraeady logd in !");
+            window.location.href ="/";
+        }
+
+    },[])
     return(
         <>
         <Navbar/>

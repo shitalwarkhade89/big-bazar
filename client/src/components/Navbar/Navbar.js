@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 function Navbar() {
+    const [user, setUser] =useState({});
 
-
+    useEffect(()=>{
+        const storageUser =JSON.parse(localStorage.getItem("user") || '{}');
+        setUser(storageUser);
+    },[])
     return (
         <>
             <div className="navbar">
@@ -14,7 +18,19 @@ function Navbar() {
                     <Link to="orders" className="navbar-links">My Orders</Link>
                 </div>
 
-                <span  className="navbar-links">Hello ,User</span>
+                <div  className="user">Hello, {user.name ||"User"}
+
+                {
+                   user.name ? (<span className="logout-btn" onClick={() => {
+                    localStorage.removeItem("user");
+                    window.location.href ="/login" ;
+                 }} >
+                     Logout
+                     </span>)
+                     :
+                     null
+                }
+                </div>
             </div>
         </>
     )
