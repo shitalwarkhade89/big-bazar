@@ -1,6 +1,8 @@
 import express from 'express';
 import mongoose, { Schema } from 'mongoose';
 import dotenv from 'dotenv';
+import path from 'path';
+const __dirname = path.resolve();
 dotenv.config();
 import User from './models/User.js';
 import Product from './models/Product.js';
@@ -289,6 +291,14 @@ app.patch("/order/status/:id", async (req, res) => {
   
 
 const PORT = process.env.PORT || 5000;
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+    });
+  }
 
 app.listen(PORT, () => {
     console.log(`server running on port :${PORT}`)
