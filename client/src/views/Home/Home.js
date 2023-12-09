@@ -1,14 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import"./Home.css";
 import Navbar from "../../components/Navbar/Navbar";
+import axios from 'axios';
+import ProductCard from "../../components/ProductCard/ProductCard";
  function Home(){
+const [products,setProducts] =useState([]);
 
+const loadproduct =async ()=>{
+    try{
+    const response =await axios.get("/products");
+    setProducts(response?.data?.data);
+    }
+catch (err){
+    console.log(err);
+    alert("Error loading product");
+}
 
+};
+
+useEffect(()=>{
+loadproduct();
+},[])
     return(
-        <>
+        <div>
         <Navbar/>
-        <h3>This is a home page</h3>
-        </>
+       <div className="products-container">
+       {
+           products?.map ((product,index) =>{
+            
+         const {name,description,price,image} = product;
+
+            return(<ProductCard 
+                key={index} 
+                name={name}
+                description={description}
+                price={price}
+                image={image}
+               
+            />)
+              
+           }) 
+        }
+       </div>
+        </div>
     )
  }
  export default Home
