@@ -1,7 +1,8 @@
 import react from 'react';
 import './ProductCard.css';
+import { Link } from 'react-router-dom';
 
-function ProductCard( {name,description,price,image,}){
+function ProductCard( { id,name,description,price,image,}){
     return(
         <>
      <div className="product-card">
@@ -12,7 +13,7 @@ function ProductCard( {name,description,price,image,}){
         <p className='product-description'>{description}</p>
         <p className='product-price'>₹ {price}</p>
        <div>
-        <button type='button' className='btn product-card-btn'> Buy Now</button>
+      <Link to={`/buypage/${id}`} className='product-card-btn' >  <button type='button' className='btn product-card-btn'> Buy Now</button></Link>
        </div>
      </div>
      </>

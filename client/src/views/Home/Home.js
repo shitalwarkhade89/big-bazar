@@ -28,7 +28,7 @@ loadproduct();
        {
            products?.map ((product,index) =>{
             
-         const {name,description,price,image} = product;
+         const { _id,name,description,price,image} = product;
 
             return(<ProductCard 
                 key={index} 
@@ -36,6 +36,7 @@ loadproduct();
                 description={description}
                 price={price}
                 image={image}
+                id={_id}
                
             />)
               

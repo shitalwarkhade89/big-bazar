@@ -16,6 +16,7 @@ function Navbar() {
                     <Link to="/login" className="navbar-links">Login</Link>
                     <Link to="/signup" className="navbar-links">Signup</Link>
                     <Link to="orders" className="navbar-links">My Orders</Link>
+                    
                 </div>
 
                 <div  className="user">Hello, {user.name ||"User"}

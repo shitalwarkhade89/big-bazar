@@ -5,6 +5,7 @@ import Login from './views/Login/Login';
 import Singup from './views/Singup/Singup';
 import Home from './views/Home/Home';
 import MyOrders from './views/MyOrders/MyOrders';
+import BuyPage from './views/BuyPage/BuyPage';
 const root = ReactDom.createRoot(document.getElementById('root'));
 
 
@@ -24,6 +25,10 @@ const router= createBrowserRouter([
     {
         path:'/orders',
         element:<MyOrders/>
+    },
+    {
+        path:'/buypage/:id',
+        element:<BuyPage/>
     },
 
 ])
