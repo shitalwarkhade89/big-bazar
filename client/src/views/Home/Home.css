@@ -5,3 +5,13 @@
     margin-top: 50px;
 
 }
+.search-bar{
+   width: 40%;
+   font-size: 30px;
+   display: block;
+   margin: 20px auto;
+   border-radius: 20px;
+   padding: 5px 3%;
+   border: 1px solid #ccc;
+
+}

@@ -6,6 +6,23 @@ import ProductCard from "../../components/ProductCard/ProductCard";
  function Home(){
 const [products,setProducts] =useState([]);
 
+const [search,setSearch] = useState('')
+
+const searchProduct = async () => {
+if(search === ''){
+    loadproduct();
+    return;
+}
+const response =  await axios.get(`/serchProduct?q=${search}`);
+setProducts(response?.data?.data);
+}
+
+useEffect(() => {
+    searchProduct()
+},[search])
+
+
+
 const loadproduct =async ()=>{
     try{
     const response =await axios.get("/products");
@@ -24,6 +41,16 @@ loadproduct();
     return(
         <div>
         <Navbar/>
+        <input 
+        type="text" 
+        placeholder="🔍
+        search" 
+        className=" search-bar"
+        value={search}
+        onChange={(e) => {
+            setSearch(e.target.value)
+        }}
+        /> 
        <div className="products-container">
        {
            products?.map ((product,index) =>{
