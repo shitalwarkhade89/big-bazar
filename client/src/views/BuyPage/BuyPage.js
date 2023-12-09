@@ -56,11 +56,11 @@ function BuyPage() {
         <>
             <Navbar />
             <div className="buy-product-conatiner">
-                <div className="buy-roduct-info">
+                <div className="buy-product-info">
                     <img src={product.image} alt={product.name} className="buy-product-img" />
-                    <div>
-                        <h1>{product.name}</h1>
-                        <p>{product.description}</p>
+                    <div className="info-div">
+                        <h1 className="product-name">{product.name}</h1>
+                        <p className="product-description">{product.description}</p>
                         <div>
                        <span className="btn-decrese-quantity" onClick={decreseOuantity}>➖</span>
                         <span className="product-quantity">{quantity}</span>

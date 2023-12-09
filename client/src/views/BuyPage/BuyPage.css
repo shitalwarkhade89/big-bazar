@@ -4,14 +4,23 @@ body{
 .buy-product-img{
     width: 300px;
     border-radius: 10px;
-    margin: 10px;
+    margin: 20px 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 .buy-product-conatiner{
     padding: 20px 100px;
+    width: 600px;
+    display: block;
+    margin: 30px auto;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
-.buy-roduct-info{
-    display: flex;
+.info-div{
+    margin-left: 15px;
+
+}
+.buy-product-info{
+   display: flex;
+   justify-content: space-between;
    
 }
 .btn-decrese-quantity{
@@ -61,7 +70,7 @@ body{
         margin: 10px auto;
         display: block;
     }
-    .buy-roduct-info{
+    .buy-product-info{
         flex-direction: column;
     }
 }

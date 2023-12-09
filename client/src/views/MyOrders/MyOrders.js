@@ -58,7 +58,7 @@ function MyOrders(){
                     <>
                     <div className="order-card">
                         <Link to={`/buypage/${product._id}`} className="my-product-name">{product.name}</Link>
-                        <h4>₹ {product.price} x {quantity} = ₹{product.price * quantity}</h4>
+                        <h4 className="product-price">₹ {product.price} x {quantity} = ₹{product.price * quantity}</h4>
                         <h4>{deliveryCharges}</h4>
                         <span className={`order-status ${STATUS_BADGE_COLOR_MAP[status]}`}>{status}</span>
                     </div>
